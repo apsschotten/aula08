@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Registrar() {
+export default async function Registrar() {
   event.preventDefault();
   try {
     await fetch('http://localhost:3000/usuarios', {
@@ -14,10 +14,6 @@ export default function Registrar() {
   } catch {
     alert("Ocorreu um erro.");
   }
-
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
-  };
 
   return (
     <main>
