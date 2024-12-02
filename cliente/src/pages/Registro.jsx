@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default async function Registrar() {
+const Registrar = async (event) => {
   event.preventDefault();
   try {
     await fetch('http://localhost:3000/usuarios', {
@@ -18,8 +18,8 @@ export default async function Registrar() {
   return (
     <main>
       <form onSubmit={Registrar}>
-        <imput value={nome}>Nome</imput>
-        <imput value={email}>E-mail</imput>
+        <input type="text" id="" value={nome} onChange={(event) => setNome(event.target.value)}>Nome</input>
+        <input type="email" id="" value={email} onChange={(event) => setEmail(event.target.value)}>E-mail</input>
         <button>Enviar</button>
       </form>
     </main>
