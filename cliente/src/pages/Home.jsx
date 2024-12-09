@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from '@mui/material';
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 
@@ -47,7 +48,7 @@ export default function Home() {
 
   return (
     <div>
-      <button onClick={() => exportarPDF()}>Gerar PDF</button>
+      <Button variant="outlined" onClick={() => exportarPDF()}>Gerar PDF</Button>
       <table>
         <tr>
           <td>Nome</td>
@@ -57,7 +58,7 @@ export default function Home() {
           <tr key={usuario.id}>
             <td>{usuario.nome}</td>
             <td>{usuario.email}</td>
-            <td><button onClick={() => removerPessoa(usuario.id)}>Excluir</button></td>
+            <td><Button variant="outlined" onClick={() => removerPessoa(usuario.id)}>Excluir</Button></td>
           </tr>
         )}
       </table>
