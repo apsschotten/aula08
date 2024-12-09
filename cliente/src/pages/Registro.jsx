@@ -1,35 +1,35 @@
 import { useState } from "react";
-import { useNavigation } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 export default function RegistrarPessoa() {
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-
-  const navigate = useNavigation();
+  const [nome, setNome] = useState('')
+  const [email, setEmail] = useState('')
 
   const registrar = async (event) => {
     event.preventDefault();
     try {
-      const resposta = await fetch('http://localhost:3000/usuarios', {
+      await fetch('http://localhost:3000/usuarios', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
           nome: nome,
           email: email
         })
-      });
-    } catch {
-      alert("Ocorreu um erro.");
+      })
+      alert("Registrado com sucesso!")
     }
-
-    return (
-      <main>
-        <form onSubmit={registrar}>
-          <input type="text" id="" value={nome} onChange={(event) => setNome(event.target.value)}>Nome</input>
-          <input type="email" id="" value={email} onChange={(event) => setEmail(event.target.value)}>E-mail</input>
-          <button>Enviar</button>
-        </form>
-      </main>
-    );
+    catch {
+      alert("Ocorreu um erro na aplicação.")
+    }
   }
+
+  return (
+    <div>
+      <form onSubmit={registrar}>
+        <input type="text" name="Nome" id="" value={nome} onChange={(event) => setNome(event.target.value)} />
+        <input type="email" name="E-mail" id="" value={email} onChange={(event) => setEmail(event.target.value)} />
+        <button>Registrar</button>
+      </form>
+    </div>
+  );
 }
